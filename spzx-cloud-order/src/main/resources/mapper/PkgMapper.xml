@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.spzx.cloud.order.mapper.PkgMapper">
+
+    <select id="findSePkgList" resultType="com.atguigu.spzx.cloud.order.vo.SePkgSplitVO">
+        SELECT sm.org_id,
+        sm.se_id,
+        sm.pkg_no,
+        sm.out_country,
+        sm.addr_no,
+        sm.pkg_qty,
+        sm.chk_date,
+        sm.status     AS pkg_status,
+        sd.se_seq,
+        sd.color,
+        sd.art_name,
+        im.status     AS item_status,
+        om.po,
+        om.crea_user,
+        om.crea_date,
+        dm.cust_code  AS cust_code
+        FROM se_pkg_m sm
+        LEFT JOIN (
+        SELECT org_id, pkg_no, MIN(se_seq) se_seq,
+        MIN(color) color, MIN(art_name) art_name
+        FROM se_pkg_d
+        GROUP BY org_id, pkg_no
+        ) sd  ON sm.org_id = sd.org_id AND sm.pkg_no = sd.pkg_no
+        LEFT JOIN se_ord_item im
+        ON im.org_id = sm.org_id AND im.se_id = sm.se_id AND im.se_seq = sd.se_seq
+        LEFT JOIN se_ord_m om
+        ON om.org_id = sm.org_id AND om.se_id = sm.se_id
+        WHERE sm.last_date >= #{sTime}
+        AND sm.last_date < #{eTime}
+        AND sm.org_id = #{orgId}
+        AND EXISTS (SELECT 1 FROM se_pack_m x
+        WHERE x.org_id = sm.org_id
+        AND x.pkg_no = sm.pkg_no
+        AND x.status = 7)
+        ORDER BY sm.last_date DESC
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+    <select id="findSePkgIiemList" resultType="com.atguigu.spzx.cloud.order.vo.SePkgSplitItemVO">
+        SELECT d.pkg_no, d.pk_seq, d.status AS pack_status, d.sizerun,
+        d.s_no, d.e_no, d.item_no,
+        b.ctns_number, b.barcode_no
+        FROM se_pack_m d
+        LEFT JOIN se_pack_barcode b
+        ON b.org_id = d.org_id AND b.pkg_no = d.pkg_no
+        AND b.ctns_number BETWEEN d.s_no AND d.e_no
+        WHERE d.pkg_no IN
+        <foreach collection="pkgNos" item="pkgNo" open="(" close=")" separator=",">
+            #{pkgNo}
+        </foreach>
+        ORDER BY d.pkg_no, d.pk_seq, b.ctns_number
+    </select>
+
+</mapper>

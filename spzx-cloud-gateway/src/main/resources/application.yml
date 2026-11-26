@@ -1,0 +1,43 @@
+server:
+  port: 8222
+spring:
+  application:
+    name: spzx-cloud-gateway
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        server-addr: http://120.79.247.255:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 启用本地路径服务发现
+      routes: #路由配置：由4个组成部分：id,uri,predicates,filters
+        - id: spzx-cloud-order
+          uri: lb://spzx-cloud-order
+          predicates:
+            - Path=/api/order/**
+        - id: spzx-cloud-user
+          uri: lb://spzx-cloud-user
+          #uri: https://example.org
+          predicates: #多种断言他们是 与 的关系。
+            - Path=/api/user/**
+#            - After=2025-09-16T15:41:22.096445600+08:00[Asia/Shanghai]
+#            - Before=2025-09-30T15:41:22.096445600+08:00[Asia/Shanghai]
+#            - Between=2025-09-16T15:41:22.096445600+08:00[Asia/Shanghai], 2025-09-30T15:41:22.096445600+08:00[Asia/Shanghai]
+#            - Cookie=token,abc
+#            - Header=X-Request-Id, \d+
+#            - Host=**.somehost.org,**.anotherhost.org
+#            - Method=GET,POST
+#            - Query=age,22
+#            - RemoteAddr=192.168.1.1/16
+          #路由过滤器：只针对于当前路由生效
+          filters:
+            - AddRequestHeader=company,atguigu
+      #默认过滤器，针对于所有路由生效
+      default-filters:
+        - AddRequestParameter=email,tom@163.com
+#过滤器执行顺序问题
+#1.按照order的值进行排序，order的值越小，优先级越高
+#2.order值一样时，会按照 globalFilter > defaultFilter > 路由过滤器的顺序执行

@@ -1,0 +1,21 @@
+# 配置服务端口号
+server:
+  port: 10111
+
+# 配置数据库的连接信息
+spring:
+  application:
+    name: spzx-cloud-api
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        server-addr: http://120.79.247.255:8848
+        cluster-name: BJ
+        #名称空间和组可以对微服务进行隔离。
+        #java.lang.IllegalStateException: No instances available for spzx-cloud-user
+#        namespace: 9bc36294-1160-447e-8595-678699d2008b #默认名称空间public,也可以指定命名空间进行注册
+#        group: dev02  #默认组名称DEFAULT_GROUP
+        #ephemeral: false  # 配置该实例为非临时实例
+
