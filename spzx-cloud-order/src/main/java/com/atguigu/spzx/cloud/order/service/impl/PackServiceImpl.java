@@ -7,11 +7,13 @@
 package com.atguigu.spzx.cloud.order.service.impl;
 
 import com.atguigu.spzx.cloud.order.mapper.PkgMapper;
+import com.atguigu.spzx.cloud.order.result.Result;
 import com.atguigu.spzx.cloud.order.service.PackService;
 import com.atguigu.spzx.cloud.order.vo.SePkgSplitItemVO;
 import com.atguigu.spzx.cloud.order.vo.SePkgSplitVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +34,9 @@ public class PackServiceImpl implements PackService {
 
         List<SePkgSplitVO> voList = pkgMapper.findSePkgList(orgid,sTime,eTime,pageSize,pageIndex);
 
+        if(CollectionUtils.isEmpty(voList)){
+            return voList;
+        }
 //        List<String> pkgNos = new ArrayList<>();
 //
 //        for(SePkgSplitVO vo : voList){
@@ -45,7 +50,8 @@ public class PackServiceImpl implements PackService {
         // 获取分单的装箱信息
         List<SePkgSplitItemVO> sePkgIiemList = pkgMapper.findSePkgIiemList(pkgNos);
 
-        // 拼装信息
+        // 拼装信息 按照pkgNo为一组
+
         
 
         return voList;
