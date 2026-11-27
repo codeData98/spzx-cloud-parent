@@ -1,11 +1,16 @@
 package com.atguigu.spzx.cloud.order.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Data
 public class SePkgSplitItemVO {
+
+    // 仅用于 Java 端按分单号分组，不输出到 JSON
+    @JsonIgnore
+    private String pkgNo;
 
     // ===== 装箱明细：SE_PACK_M =====
     private Integer pkSeq;

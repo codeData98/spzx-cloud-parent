@@ -18,7 +18,7 @@
         om.po,
         om.crea_user,
         om.crea_date,
-        dm.cust_code  AS cust_code
+        dm.cust_name  AS custNm
         FROM se_pkg_m sm
         LEFT JOIN (
         SELECT org_id, pkg_no, MIN(se_seq) se_seq,
@@ -42,13 +42,15 @@
     </select>
     <select id="findSePkgIiemList" resultType="com.atguigu.spzx.cloud.order.vo.SePkgSplitItemVO">
         SELECT d.pkg_no, d.pk_seq, d.status AS pack_status, d.sizerun,
-        d.s_no, d.e_no, d.item_no,
+        d.ctn_pairs, d.nw, d.gw, d.item_no,
+        d.s_no, d.e_no, d.length, d.width, d.high,
         b.ctns_number, b.barcode_no
         FROM se_pack_m d
         LEFT JOIN se_pack_barcode b
         ON b.org_id = d.org_id AND b.pkg_no = d.pkg_no
         AND b.ctns_number BETWEEN d.s_no AND d.e_no
-        WHERE d.pkg_no IN
+        WHERE d.org_id = #{orgId}
+        AND d.pkg_no IN
         <foreach collection="pkgNos" item="pkgNo" open="(" close=")" separator=",">
             #{pkgNo}
         </foreach>

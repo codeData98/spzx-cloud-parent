@@ -25,5 +25,6 @@ public interface PkgMapper {
                                      @Param("offset") Integer offset,
                                      @Param("size") Integer size);
 
-    List<SePkgSplitItemVO> findSePkgIiemList(@Param("pkgNos") List<String> pkgNos);
+    List<SePkgSplitItemVO> findSePkgIiemList(@Param("orgId") Long orgId,
+                                             @Param("pkgNos") List<String> pkgNos);
 }
