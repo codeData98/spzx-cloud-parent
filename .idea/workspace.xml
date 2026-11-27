@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b72690a-3e51-4856-9e0a-7269a9851454" name="Changes" comment="" />
+    <list default="true" id="5b72690a-3e51-4856-9e0a-7269a9851454" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/spzx-cloud-order/src/main/java/com/atguigu/spzx/cloud/order/service/impl/PackServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spzx-cloud-order/src/main/java/com/atguigu/spzx/cloud/order/service/impl/PackServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -199,12 +201,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1795450524357</updated>
-      <workItem from="1795660932899" duration="14714000" />
+      <workItem from="1795660932899" duration="15888000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
