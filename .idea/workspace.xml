@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b72690a-3e51-4856-9e0a-7269a9851454" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spzx-cloud-order/src/main/java/com/atguigu/spzx/cloud/order/service/impl/PackServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spzx-cloud-order/src/main/java/com/atguigu/spzx/cloud/order/service/impl/PackServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="5b72690a-3e51-4856-9e0a-7269a9851454" name="Changes" comment="拼接一对多数据" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,10 +201,34 @@
       <updated>1795450524357</updated>
       <workItem from="1795660932899" duration="14714000" />
     </task>
+    <task id="LOCAL-00001" summary="拼接一对多数据">
+      <option name="closed" value="true" />
+      <created>1795706907318</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1795706907318</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="拼接一对多数据" />
+    <option name="LAST_COMMIT_MESSAGE" value="拼接一对多数据" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
